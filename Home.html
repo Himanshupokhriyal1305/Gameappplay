@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+              .navbar-custom {
+            background-color: #0052cc;
+            color: white;
+        }
+        
+        .navbar-custom .nav-link {
+            color: white;
+            text-align: center;
+            font-size: 0.5rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #e0e0e0;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .indicator {
+            height: 3px;
+            width: 40%;
+            background-color: white;
+            margin: 0 auto;
+            border-radius: 10px;
+            position: relative;
+            top: 3px;
+        }
+        /* Styling for the main card */
+        .main-card {
+            background-color: #2a7c2a;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .main-card .dice {
+            position: absolute;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .dice-left {
+            left: 10px;
+        }
+
+        .dice-right {
+            right: 10px;
+        }
+
+        .main-card .result-number {
+            font-size: 3rem;
+            color: #d32f2f;
+            margin-top: 10px;
+        }
+
+        .main-card .time {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* Styling for the scrollable cards */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px 0;
+        }
+
+        .small-card {
+            background-color: #dfe6e9;
+            width: 100px;
+            margin-right: 10px;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .small-card .card-title {
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .small-card .card-time {
+            color: #636e72;
+        }
+
+        /* Hide scrollbar on WebKit browsers */
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        /* header */
+        .header {
+            background-color: #0052cc;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header  ">
+        <p>Sanjeev</p>
+        <h2>0.0 </h2><p style="width: -webkit-fill-available; text-align: center;">Wallet Balance</p> 
+    </div>
+
+    <div class="container my-4">
+        <!-- Main Card -->
+        <div class="main-card">
+            <img src="https://img.icons8.com/emoji/48/000000/game-die.png" alt="Dice" class="dice dice-left">
+            <div id="main-title">GHAZIABAD</div>
+            <div id="main-number" class="result-number">5</div>
+            <div id="main-time" class="time">08:15 pm</div>
+            <img src="https://img.icons8.com/emoji/48/000000/game-die.png" alt="Dice" class="dice dice-right">
+        </div>
+
+        <!-- Scrollable Cards -->
+        <div class="scroll-container">
+            <div class="small-card" data-title="NEW FARIDABAD" data-number="51" data-time="06:20 pm">
+                <div class="card-title">51</div>
+                <div>NEW FARIDABAD</div>
+                <div class="card-time">06:20 pm</div>
+            </div>
+            <div class="small-card" data-title="FARIDABAD" data-number="58" data-time="06:25 pm">
+                <div class="card-title">58</div>
+                <div>FARIDABAD</div>
+                <div class="card-time">06:25 pm</div>
+            </div>
+            <div class="small-card" data-title="GHAZIABAD" data-number="51" data-time="08:15 pm">
+                <div class="card-title">51</div>
+                <div>GHAZIABAD</div>
+                <div class="card-time">08:15 pm</div>
+            </div>
+            <div class="small-card" data-title="MANALI" data-number="--" data-time="10:15 pm">
+                <div class="card-title">--</div>
+                <div>MANALI</div>
+                <div class="card-time">10:15 pm</div>
+            </div>
+            <div class="small-card" data-title="NEW FARIDABAD" data-number="51" data-time="06:20 pm">
+                <div class="card-title">51</div>
+                <div>NEW FARIDABAD</div>
+                <div class="card-time">06:20 pm</div>
+            </div>
+            <div class="small-card" data-title="FARIDABAD" data-number="58" data-time="06:25 pm">
+                <div class="card-title">58</div>
+                <div>FARIDABAD</div>
+                <div class="card-time">06:25 pm</div>
+            </div>
+            <div class="small-card" data-title="GHAZIABAD" data-number="51" data-time="08:15 pm">
+                <div class="card-title">51</div>
+                <div>GHAZIABAD</div>
+                <div class="card-time">08:15 pm</div>
+            </div>
+            <div class="small-card" data-title="MANALI" data-number="--" data-time="10:15 pm">
+                <div class="card-title">--</div>
+                <div>MANALI</div>
+                <div class="card-time">10:15 pm</div>
+            </div>
+            <div class="small-card" data-title="NEW FARIDABAD" data-number="51" data-time="06:20 pm">
+                <div class="card-title">51</div>
+                <div>NEW FARIDABAD</div>
+                <div class="card-time">06:20 pm</div>
+            </div>
+            <div class="small-card" data-title="FARIDABAD" data-number="58" data-time="06:25 pm">
+                <div class="card-title">58</div>
+                <div>FARIDABAD</div>
+                <div class="card-time">06:25 pm</div>
+            </div>
+            <div class="small-card" data-title="GHAZIABAD" data-number="51" data-time="08:15 pm">
+                <div class="card-title">51</div>
+                <div>GHAZIABAD</div>
+                <div class="card-time">08:15 pm</div>
+            </div>
+            <div class="small-card" data-title="MANALI" data-number="--" data-time="10:15 pm">
+                <div class="card-title">--</div>
+                <div>MANALI</div>
+                <div class="card-time">10:15 pm</div>
+            </div>
+            <!-- Additional cards can be added here -->
+        </div>
+        <div class="d-flex justify-content-center ">
+            <button type="button" class="btn btn-dark"> <i class="fa-solid fa-arrows-rotate"></i>Refresh</button>
+    
+        </div>
+    </div>
+   
+    <!-- navbar -->
+    <nav class="navbar navbar-expand navbar-custom fixed-bottom">
+        <ul class="navbar-nav w-100 d-flex justify-content-between">
+            <li class="nav-item">
+                <a class="nav-link" href="Home.html">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="play.html">
+                    <i class="nav-icon fas fa-gamepad"></i>
+                    <span>PLAY GAME</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="nav-icon fas fa-circle-notch"></i>
+                    <span>PLAY RAFF</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="wallet.html">
+                    <i class="nav-icon fas fa-wallet"></i>
+                    <span>WALLET</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="list.html">
+                    <i class="nav-icon fas fa-ellipsis-h"></i>
+                    <span>MORE</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript to update main card on small card click
+        $(document).ready(function() {
+            $('.small-card').on('click', function() {
+                // Get data from clicked small card
+                const title = $(this).data('title');
+                const number = $(this).data('number');
+                const time = $(this).data('time');
+
+                // Update main card with new data
+                $('#main-title').text(title);
+                $('#main-number').text(number);
+                $('#main-time').text(time);
+            });
+        });
+    </script>
+</body>
+</html>

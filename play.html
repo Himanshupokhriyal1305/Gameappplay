@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gameplay Interface</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar-custom {
+            background-color: #0052cc;
+            color: white;
+        }
+        
+        .navbar-custom .nav-link {
+            color: white;
+            text-align: center;
+            font-size: 0.5rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #e0e0e0;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .indicator {
+            height: 3px;
+            width: 40%;
+            background-color: white;
+            margin: 0 auto;
+            border-radius: 10px;
+            position: relative;
+            top: 3px;
+        }
+        .wheel {
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+        .result-panel {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .result-panel div {
+            font-size: 1rem;
+            background-color: gold;
+            color: black;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .bet-panel {
+            display: block;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .bet-panel input {
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+        }
+        .bet-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        .btn-bet {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            border: none;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .bet-panel {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            .btn-bet {
+                padding: 8px 15px;
+            }
+            .result-panel div {
+                font-size: 0.9rem;
+                padding: 4px;
+            }
+            .wheel {
+                max-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .bet-panel {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+            }
+            .btn-bet {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+            .bet-footer {
+                font-size: 0.9rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .result-panel div {
+                font-size: 0.8rem;
+                padding: 3px;
+            }
+            .wheel {
+                max-width: 150px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Wheel Section -->
+    <div class="wheel text-center">
+        <img src="./image/71ni3tV6tBL._SX679_-removebg-preview.png" alt="Game Wheel" class="img-fluid">
+    </div>
+
+    <!-- Results Section -->
+    <div class="result-panel container-fluid">
+        <div>Wallet: 0.00</div>
+        <div>Last 5 Result: 0 | 1 | 9 | 0 | 4 | 3</div>
+        <div>Next Result: 00:13:24</div>
+        <div>Last Result: 0</div>
+    </div>
+
+    <!-- Betting Section -->
+    <div class="container bet-panel">
+        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
+        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
+        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
+        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
+        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
+       
+      
+    </div>
+
+    <!-- Footer Section -->
+    <div class="bet-footer container-fluid">
+        <span class="amount" id="totalAmount">Total: 0/-</span>
+        <button class="btn-bet" onclick="placeBet()">Bet Ok</button>
+    </div>
+     <!-- navbar -->
+     <nav class="navbar navbar-expand navbar-custom fixed-bottom">
+        <ul class="navbar-nav w-100 d-flex justify-content-between">
+            <li class="nav-item">
+                <a class="nav-link" href="Home.html">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="play.html">
+                    <i class="nav-icon fas fa-gamepad"></i>
+                    <span>PLAY GAME</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="nav-icon fas fa-circle-notch"></i>
+                    <span>PLAY RAFF</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="wallet.html">
+                    <i class="nav-icon fas fa-wallet"></i>
+                    <span>WALLET</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="list.html">
+                    <i class="nav-icon fas fa-ellipsis-h"></i>
+                    <span>MORE</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- JavaScript to Calculate Total -->
+    <script>
+        // Select all input fields with the class "bet-input"
+        const betInputs = document.querySelectorAll('.bet-input');
+        const totalAmountDisplay = document.getElementById('totalAmount');
+
+        // Function to calculate total amount
+        function calculateTotal() {
+            let total = 0;
+            betInputs.forEach(input => {
+                const value = parseFloat(input.value);
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            totalAmountDisplay.textContent = `Total: ${total}/-`;
+        }
+
+        // Add event listener to each input for real-time total calculation
+        betInputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        // Placeholder function for Bet Ok button
+        function placeBet() {
+            alert('Bet placed!');
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
