@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WALLET</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Custom navbar styling */
         .navbar-custom {
-            background-color: #0052cc;
+            background-color: #1A1B26;
             color: white;
         }
-        
+
         .navbar-custom .nav-link {
             color: white;
             text-align: center;
-            font-size: 0.6rem;
+            font-size: 0.5rem;
         }
 
         .navbar-custom .nav-link:hover {
@@ -35,14 +38,15 @@
         .indicator {
             height: 3px;
             width: 40%;
-            background-color: white;
+            background-color: #1A1B26;
             margin: 0 auto;
             border-radius: 10px;
             position: relative;
             top: 3px;
         }
+
         .header {
-            background-color: #0052cc;
+            background-color: #1A1B26;
             color: white;
             padding: 15px;
             text-align: center;
@@ -50,63 +54,97 @@
             position: sticky;
             top: 0;
         }
-      
+
+        span {
+            white-space: nowrap;
+        }
+
+    
+        .buttones{
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            font-size: large;
+            gap: 5px;
+            height: 36px;
+            color: #fff;
+            align-items: baseline;
+
+        }
     </style>
 </head>
-<body>
+
+<body style="background-color: #1A1B26;  color: #fff;    font-family: sans-serif;
+    font-weight: 700;">
     <div class="header d-flex">
-        <span><i class="fa-solid fa-arrow-left" style="width: 25px;"></i></span> <p style="width: -webkit-fill-available; text-align: center;">Walle</p> 
+        <span><i class="fa-solid fa-arrow-left" style="width: 25px;"></i></span>
+        <p style="width: -webkit-fill-available; text-align: center;">Walle</p>
     </div>
     <div class="header  ">
-        <h2>0.0 </h2><p style="width: -webkit-fill-available; text-align: center;">Available Balance</p> 
-    </div>
-    <div>
-        <div class="d-flex" style="border-bottom: 1px solid gainsboro;">
-<div class=" d-flex justify-content-center py-3" style="width:50% ; align-items: center;border-right: 1px solid gainsboro;"> <i class="fa-solid fa-plus " style="font-size: 10px;"></i>Add Money</div>
-<div class=" d-flex justify-content-center py-3" style="width:50% ; align-items: center;border-left: 1px solid gainsboro;"> <i class="fa-solid fa-minus "style="font-size: 10px;"></i>Withdraw</div>
-
-        </div>
+        <h2>0.0 </h2>
+        <p style="width: -webkit-fill-available; text-align: center;">Available Balance</p>
     </div>
 
-  
+    <div class=" d-flex justify-content-center  mt-2 ">
+        <button type="button" class="btn buttones bg-danger   pt-2 "
+           > <i class="fa-solid fa-plus "
+               ></i>
+            <h6>Add Money</h6>
+        </button>
+    </div>
+    <div class=" d-flex justify-content-center mt-2 ">
+        <button type="button" class="btn buttones bg-danger  pt-2 "
+            ><i class="fa-solid fa-minus"
+               ></i>
+            <h6>Withdraw</h6>
+        </button>
+    </div>
+
+
+
+
     <!-- list -->
-<!-- navbar -->
-<nav class="navbar navbar-expand navbar-custom fixed-bottom">
-    <ul class="navbar-nav w-100 d-flex justify-content-between">
-        <li class="nav-item">
-            <a class="nav-link" href="Home.html">
-                <i class="nav-icon fas fa-home"></i>
-                <span>HOME</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="play.html">
-                <i class="nav-icon fas fa-gamepad"></i>
-                <span>PLAY GAME</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">
-                <i class="nav-icon fas fa-circle-notch"></i>
-                <span>PLAY RAFF</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="wallet.html">
-                <i class="nav-icon fas fa-wallet"></i>
-                <span>WALLET</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="list.html">
-                <i class="nav-icon fas fa-ellipsis-h"></i>
-                <span>MORE</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+    <!-- navbar -->
+    <div>
+        <nav class="navbar navbar-expand navbar-custom fixed-bottom">
+            <ul class="navbar-nav w-100 d-flex justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="Home.html">
+                        <i class="nav-icon fas fa-home"></i>
+                        <span>HOME</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="play.html">
+                        <i class="nav-icon fas fa-gamepad"></i>
+                        <span>PLAY GAME</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="nav-icon fas fa-circle-notch"></i>
+                        <span>PLAY RAFF</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="wallet.html">
+                        <i class="nav-icon fas fa-wallet"></i>
+                        <span>WALLET</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="list.html">
+                        <i class="nav-icon fas fa-ellipsis-h"></i>
+                        <span>MORE</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
-    <div class="indicator"></div>
+    <div class="indicator">
+
+    </div>
 
     <!-- FontAwesome Icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -114,4 +152,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
