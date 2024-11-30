@@ -1,246 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gameplay Interface</title>
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Lottery Game</title>
     <style>
         body {
-            background-color: #1A1B26;
-            color: #fff;
             font-family: Arial, sans-serif;
-        }
-        span{
-            white-space: nowrap;
-        }
-        
-        .navbar-custom {
-            background-color: #1A1B26;
+            background-color: #222;
             color: white;
-        }
-        
-        .navbar-custom .nav-link {
-            color: white;
-            text-align: center;
-            font-size: 0.5rem;
-        }
-
-        .navbar-custom .nav-link:hover {
-            color: #e0e0e0;
-        }
-
-        .nav-icon {
-            font-size: 1.5rem;
-            display: block;
-        }
-
-        .nav-item {
-            flex: 1;
-        }
-
-        .indicator {
-            height: 3px;
-            width: 40%;
-            background-color: white;
-            margin: 0 auto;
-            border-radius: 10px;
-            position: relative;
-            top: 3px;
-        }
-        .wheel {
-            width: 100%;
-            max-width: 300px;
-            margin: auto;
-        }
-        .result-panel {
-            text-align: center;
-            margin: 10px 0;
-        }
-        .result-panel div {
-            font-size: 1rem;
-            background-color: gold;
-            color: black;
-            padding: 5px;
-            margin: 5px;
-            border-radius: 5px;
-        }
-        .bet-panel {
-            display: block;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin: 10px 0;
-            text-align: center;
-        }
-        .bet-panel input {
-            text-align: center;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 0.9rem;
-        }
-        .bet-footer {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin: 10px 0;
-            font-size: 1rem;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
-        .btn-bet {
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            border: none;
+        .game-container {
+            text-align: center;
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .bet-panel {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-            .btn-bet {
-                padding: 8px 15px;
-            }
-            .result-panel div {
-                font-size: 0.9rem;
-                padding: 4px;
-            }
-            .wheel {
-                max-width: 200px;
-            }
+        select, input, button {
+            font-size: 1.2rem;
+            margin: 10px;
+            padding: 5px;
         }
-        
-        @media (max-width: 480px) {
-            .bet-panel {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 5px;
-            }
-            .btn-bet {
-                padding: 6px 10px;
-                font-size: 0.9rem;
-            }
-            .bet-footer {
-                font-size: 0.9rem;
-                flex-direction: column;
-                gap: 5px;
-            }
-            .result-panel div {
-                font-size: 0.8rem;
-                padding: 3px;
-            }
-            .wheel {
-                max-width: 150px;
-            }
+        #timer, #result {
+            margin-top: 20px;
+            font-size: 2rem;
         }
-        
+        #history {
+            margin-top: 20px;
+            width: 80%;
+        }
     </style>
 </head>
 <body>
+    <div class="game-container">
+        <h1>City Lottery Game</h1>
+        <label for="city">Select City:</label>
+        <select id="city">
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="modinager">Modinagar</option>
+            <option value="meerut">Meerut</option>
+        </select>
 
-    <!-- Wheel Section -->
-    <div class="wheel text-center">
-        <img src="./image/71ni3tV6tBL._SX679_-removebg-preview.png" alt="Game Wheel" class="img-fluid">
+        <label for="number">Select Number (1-100):</label>
+        <input type="number" id="number" min="1" max="100" required>
+
+        <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" min="1" required>
+
+        <button onclick="startGame()">Start Game</button>
+
+        <div id="timer"></div>
+        <div id="result"></div>
+
+        <h2>Game History</h2>
+        <ul id="history"></ul>
     </div>
 
-    <!-- Results Section -->
-    <div class="result-panel container-fluid">
-        <div>Wallet: 0.00</div>
-        <div>Last 5 Result: 0 | 1 | 9 | 0 | 4 | 3</div>
-        <div>Next Result: 00:13:24</div>
-        <div>Last Result: 0</div>
-    </div>
-
-    <!-- Betting Section -->
-    <div class="container bet-panel">
-        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
-        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
-        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
-        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
-        <input type="number" placeholder="Amount" min="0" class="bet-input my-1">
-       
-      
-    </div>
-
-    <!-- Footer Section -->
-    <div class="bet-footer container-fluid">
-        <span class="amount" id="totalAmount">Total: 0/-</span>
-        <button class="btn-bet" onclick="placeBet()">Bet Ok</button>
-    </div>
-     <!-- navbar -->
-     <nav class="navbar navbar-expand navbar-custom fixed-bottom">
-        <ul class="navbar-nav w-100 d-flex justify-content-between">
-            <li class="nav-item">
-                <a class="nav-link" href="Home.html">
-                    <i class="nav-icon fas fa-home"></i>
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="play.html">
-                    <i class="nav-icon fas fa-gamepad"></i>
-                    <span>PLAY GAME</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="nav-icon fas fa-circle-notch"></i>
-                    <span>PLAY RAFF</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="wallet.html">
-                    <i class="nav-icon fas fa-wallet"></i>
-                    <span>WALLET</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="list.html">
-                    <i class="nav-icon fas fa-ellipsis-h"></i>
-                    <span>MORE</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- JavaScript to Calculate Total -->
     <script>
-        // Select all input fields with the class "bet-input"
-        const betInputs = document.querySelectorAll('.bet-input');
-        const totalAmountDisplay = document.getElementById('totalAmount');
+        let timerInterval;
+        function startGame() {
+            const city = document.getElementById('city').value;
+            const number = parseInt(document.getElementById('number').value);
+            const amount = parseInt(document.getElementById('amount').value);
 
-        // Function to calculate total amount
-        function calculateTotal() {
-            let total = 0;
-            betInputs.forEach(input => {
-                const value = parseFloat(input.value);
-                if (!isNaN(value)) {
-                    total += value;
+            if (!number || !amount || number < 1 || number > 100) {
+                alert('Please enter a valid number (1-100) and amount.');
+                return;
+            }
+
+            document.getElementById('timer').textContent = 'Timer: 30 seconds';
+            let timeLeft = 30;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                document.getElementById('timer').textContent = `Timer: ${--timeLeft} seconds`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    checkWinner(city, number, amount);
                 }
-            });
-            totalAmountDisplay.textContent = `Total: ${total}/-`;
+            }, 1000);
         }
 
-        // Add event listener to each input for real-time total calculation
-        betInputs.forEach(input => {
-            input.addEventListener('input', calculateTotal);
-        });
+        function checkWinner(city, number, amount) {
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            const resultDiv = document.getElementById('result');
+            const historyList = document.getElementById('history');
 
-        // Placeholder function for Bet Ok button
-        function placeBet() {
-            alert('Bet placed!');
+            if (number === randomNumber) {
+                resultDiv.textContent = `🎉 Winner! Your number ${number} matched. You won ₹${amount * 2}!`;
+            } else {
+                resultDiv.textContent = `❌ Better luck next time! The winning number was ${randomNumber}.`;
+            }
+
+            const historyItem = document.createElement('li');
+            historyItem.textContent = `City: ${city}, Your Number: ${number}, Bet: ₹${amount}, Winning Number: ${randomNumber}, Result: ${number === randomNumber ? 'Win' : 'Lose'}`;
+            historyList.prepend(historyItem);
         }
     </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
